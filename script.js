@@ -7,30 +7,34 @@ const button = document.getElementById("submit");
 const form1 = document.getElementById("form1");
 const button1 = document.getElementById("submit1");
 
-
-form.addEventListener("click", (e) => {
+button.addEventListener("click", (e) => {
     e.preventDefault();
-});
-button.addEventListener("click", () => {
+
     const http = document.getElementById("http").value;
     console.log(check(http));
 });
 
-
-
-form1.addEventListener("click", (e) => {
-    e.preventDefault();
+form.addEventListener("input", () => {
+    if (http) {
+        button.removeAttribute("disabled");
+    };
 });
-button1.addEventListener("click", () => {
+
+
+button1.addEventListener("click", (e) => {
+    e.preventDefault();
 
     const http1 = document.getElementById("http1").value;
     console.log(check(http1));
 });
 
+form1.addEventListener("input", () => {
+    if (http1) {
+        button1.removeAttribute("disabled");
+    };
+});
 
 function check(i) {
-
-    let result;
     if (i.indexOf("http://") === 0 || i.indexOf("https://") === 0) {
         return i
     } else {
